@@ -11,7 +11,7 @@ K3STOKEN_env:
 K3SURL_env:
   environ.setenv:
     - name: K3S_URL
-    - value: "https://192.168.1.117:6443"
+    - value: "https://192.168.1.176:6443"
 
 download_k3sinstall:
   file.managed:
