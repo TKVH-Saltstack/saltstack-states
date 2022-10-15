@@ -22,5 +22,5 @@ install_kubectl:
   file.managed:
     - name: /usr/local/bin/kubectl
     - mode: 755
-    - source: https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl
+    - source: https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl
     - skip_verify: True
