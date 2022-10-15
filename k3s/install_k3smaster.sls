@@ -89,7 +89,7 @@ kubectl_alias_k_root:
 kubectl_alias_k:
   file.append:
    - name: /home/vhang/.zshrc
-    - text:
+   - text:
       - "# kubectl"
       - "alias k=kubectl"
       - "source <(kubectl completion zsh)"
@@ -167,6 +167,8 @@ kubectx_alias:
       - "# kubectx"
       - "alias kns=kubens"
       - "alias kctx=kubectx"
+      - "complete -o default -F __start_kubens kns"
+      - "complete -o default -F __start_kubens kctx"
 
 kubectx_alias_root:
   file.append:
@@ -175,3 +177,5 @@ kubectx_alias_root:
       - "# kubectx"
       - "alias kns=kubens"
       - "alias kctx=kubectx"
+      - "complete -o default -F __start_kubens kns"
+      - "complete -o default -F __start_kubens kctx"
