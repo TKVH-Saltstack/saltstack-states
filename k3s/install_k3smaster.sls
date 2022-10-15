@@ -52,6 +52,7 @@ kubectl_alias_k_root:
     - name: /root/.zshrc
     - text: 
       - "# kubectl"
+      - "alias k=kubectl"
       - "source <(kubectl completion zsh)"
       - "complete -o default -F __start_kubectl k"
 
@@ -60,5 +61,6 @@ kubectl_alias_k:
     - name: /home/vhang/.zshrc
     - text:
       - "# kubectl"
+      - "alias k=kubectl"
       - "source <(kubectl completion zsh)"
       - "complete -o default -F __start_kubectl k"
