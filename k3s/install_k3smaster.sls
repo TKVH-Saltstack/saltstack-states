@@ -95,7 +95,7 @@ kubectl_alias_k:
       - "source <(kubectl completion zsh)"
       - "complete -o default -F __start_kubectl k"
 
-/usr/local/share/oh-my-zsh/completion:
+/usr/local/share/oh-my-zsh/completions:
   file.directory:
     - mode: 755
     - makedirs: True
@@ -148,14 +148,14 @@ cleanup_kubens:
 
 kubectx_completion:
   file.managed:
-    - name: /usr/local/share/oh-my-zsh/completion/_kubectx.zsh
+    - name: /usr/local/share/oh-my-zsh/completions/_kubectx.zsh
     - mode: 755
     - source: https://raw.githubusercontent.com/ahmetb/kubectx/master/completion/_kubectx.zsh
     - skip_verify: True
 
 kubens_completion:
   file.managed:
-    - name: /usr/local/share/oh-my-zsh/completion/_kubens.zsh
+    - name: /usr/local/share/oh-my-zsh/completions/_kubens.zsh
     - mode: 755
     - source: https://raw.githubusercontent.com/ahmetb/kubectx/master/completion/_kubens.zsh
     - skip_verify: True
