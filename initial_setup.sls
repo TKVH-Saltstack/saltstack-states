@@ -7,6 +7,11 @@ install_network_packages:
       - neofetch
       - fonts-firacode
 
+/etc/ssh/sshd_config:
+  file.managed:
+    - source:
+      - salt://conf/sshd_config
+
 vhang:
   user.present:
     - fullname: Victor HANG
