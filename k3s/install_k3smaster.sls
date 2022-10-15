@@ -2,7 +2,6 @@ install_k3srequired_packages:
   pkg.installed:
     - pkgs:
       - nfs-common
-      - kubectx
 
 /etc/rancher/k3s:
   file.directory:
