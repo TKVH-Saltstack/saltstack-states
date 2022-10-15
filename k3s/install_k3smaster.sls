@@ -91,6 +91,11 @@ kubectl_alias_k:
       - "source <(kubectl completion zsh)"
       - "complete -o default -F __start_kubectl k"
 
+/usr/local/share/oh-my-zsh/completion:
+  file.directory:
+    - mode: 755
+    - makedirs: True
+
 kubectx_completion:
   file.managed:
     - name: /usr/local/share/oh-my-zsh/completion/_kubectx.zsh
