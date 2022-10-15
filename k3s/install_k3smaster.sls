@@ -61,6 +61,7 @@ download_k9s:
   archive.extracted:
     - name: /tmp/
     - source: /tmp/k9s.tar.gz
+    - enforce_toplevel: False
 
 install_k9s:
   file.managed:
