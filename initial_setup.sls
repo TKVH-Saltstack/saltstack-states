@@ -65,3 +65,7 @@ install_ohmyzsh:
     - group: vhang
     - source:
       - salt://conf/zshrc-base
+
+update_pkg:
+  pkg.uptodate:
+    - refresh : True
