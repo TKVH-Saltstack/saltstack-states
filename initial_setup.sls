@@ -1,3 +1,24 @@
+install_network_packages:
+  pkg.installed:
+    - pkgs:
+      - vim
+      - zsh
+      - git
+      - neofetch
+      - fonts-firacode
+
+vhang:
+  user.present:
+    - fullname: Victor HANG
+    - shell: /bin/zsh
+    - groups: 
+      - sudo
+      - wheel
+
+root:
+  user.present:
+    - shell: /bin/zsh
+
 download_ohmyzsh:
   file.managed:
     - name: /opt/install.sh
