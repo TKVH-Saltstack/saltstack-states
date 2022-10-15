@@ -5,9 +5,7 @@ DISABLE_AUTO_UPDATE="true"
 DISABLE_MAGIC_FUNCTIONS="true"
 DISABLE_AUTO_TITLE="true"
 ENABLE_CORRECTION="true"
-plugins=(
-git
-)
+plugins=(git kube-ps1)
 export EDITOR='vim'
 ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
 if [[ ! -d $ZSH_CACHE_DIR ]]; then
