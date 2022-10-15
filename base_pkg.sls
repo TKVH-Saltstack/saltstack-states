@@ -4,3 +4,4 @@ install_network_packages:
       - sudo
       - vim
       - nfs-common
+      - zsh
