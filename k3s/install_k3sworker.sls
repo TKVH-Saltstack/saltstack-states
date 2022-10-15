@@ -6,7 +6,7 @@ install_k3srequired_packages:
 K3STOKEN_env:
   environ.setenv:
     - name: K3S_TOKEN
-    - value: 12345
+    - value: "12345"
 
 K3SURL_env:
   environ.setenv:

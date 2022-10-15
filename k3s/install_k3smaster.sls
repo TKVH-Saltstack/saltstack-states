@@ -16,7 +16,7 @@ install_k3srequired_packages:
 download_k3sinstall:
   environ.setenv:
     - name: K3S_TOKEN
-    - value: 12345
+    - value: "12345"
   file.managed:
     - name: /opt/k3s-install.sh
     - mode: 755
