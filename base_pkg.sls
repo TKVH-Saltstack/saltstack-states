@@ -8,3 +8,4 @@ install_network_packages:
       - openssh-server
       - cloud-init
       - curl
+      - git
