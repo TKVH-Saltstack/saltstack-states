@@ -86,3 +86,17 @@ kubectl_alias_k:
       - "alias k=kubectl"
       - "source <(kubectl completion zsh)"
       - "complete -o default -F __start_kubectl k"
+
+kubeps1_enable:
+  file.append:
+    - name: /home/vhang/.zshrc
+    - text:
+      - "plugins=("
+      - "  kube-ps1"
+
+kubeps1_enable_root:
+  file.append:
+    - name: /root/.zshrc
+    - text:
+      - "plugins=("
+      - "  kube-ps1"
