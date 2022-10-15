@@ -159,3 +159,19 @@ kubens_completion:
     - mode: 755
     - source: https://raw.githubusercontent.com/ahmetb/kubectx/master/completion/_kubens.zsh
     - skip_verify: True
+
+kubectx_alias:
+  file.append:
+    - name: /home/vhang/.zshrc
+    - text:
+      - "# kubectx"
+      - "alias kns=kubens"
+      - "alias kctx=kubectx"
+
+kubectx_alias_root:
+  file.append:
+    - name: /root/.zshrc
+    - text:
+      - "# kubectx"
+      - "alias kns=kubens"
+      - "alias kctx=kubectx"
