@@ -20,3 +20,15 @@ install_ohmyzsh:
   file.managed:
     - source:
       - salt://conf/zshrc-base
+
+/root/.zshrc:
+  file.managed:
+    - source:
+      - salt://conf/zshrc-base
+
+/home/vhang/.zshrc:
+  file.managed:
+    - user: vhang
+    - group: vhang
+    - source:
+      - salt://conf/zshrc-base
