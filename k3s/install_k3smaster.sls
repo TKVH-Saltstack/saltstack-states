@@ -52,6 +52,20 @@ install_kubectl:
     - source: https://dl.k8s.io/release/v1.25.0/bin/linux/amd64/kubectl
     - skip_verify: True
 
+install_k9s:
+  file.managed:
+    - name: /tmp/k9s.tar.gz
+    - mode: 644
+    - source: https://github.com/derailed/k9s/releases/download/v0.26.6/k9s_Linux_x86_64.tar.gz
+    - skip_verify: True
+  archive.extracted:
+    - name: /tmp/
+    - source: /tmp/k9s.tar.gz
+  file.managed:
+    - name: /usr/local/bin/k9s
+    - source: /tmp/k9s
+    - mode: 755
+
 kubectl_alias_k_root:
   file.append:
     - name: /root/.zshrc
