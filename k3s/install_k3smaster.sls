@@ -99,13 +99,14 @@ kubectl_alias_k:
 download_kubectx:
   file.managed:
     - name: /tmp/kubectx.tar.gz
-    - mode: 777
+    - mode: 644
     - source: https://github.com/ahmetb/kubectx/releases/download/v0.9.4/kubectx_v0.9.4_linux_x86_64.tar.gz
     - skip_verify: True
   archive.extracted:
     - name: /tmp/
     - source: /tmp/kubectx.tar.gz
     - enforce_toplevel: False
+    - enforce_ownership_on: /tmp/
 
 install_kubectx:
   file.managed:
@@ -116,13 +117,14 @@ install_kubectx:
 download_kubens:
   file.managed:
     - name: /tmp/kubens.tar.gz
-    - mode: 777
+    - mode: 644
     - source: https://github.com/ahmetb/kubectx/releases/download/v0.9.4/kubens_v0.9.4_linux_x86_64.tar.gz
     - skip_verify: True
   archive.extracted:
     - name: /tmp/
     - source: /tmp/kubens.tar.gz
     - enforce_toplevel: False
+    - enforce_ownership_on: /tmp/
 
 install_kubens:
   file.managed:
