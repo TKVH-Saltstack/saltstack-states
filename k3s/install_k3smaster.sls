@@ -18,6 +18,28 @@ download_k3sinstall:
     - name: /opt/k3s-install.sh
     - cwd: /opt/
 
+/home/vhang/.kube:
+  file.directory:
+    - mode: 755
+    - makedirs: True
+
+/home/vhang/.kube/config:
+  file.managed:
+    - source: /etc/rancher/k3s/k3s.yaml
+    - user: vhang
+    - group: vhang
+
+/home/vhang/.kube:
+  file.directory:
+    - mode: 755
+    - makedirs: True
+
+/root/.kube/config:
+  file.managed:
+    - source: /etc/rancher/k3s/k3s.yaml
+    - user: root
+    - group: root
+
 install_kubectl:
   file.managed:
     - name: /usr/local/bin/kubectl
