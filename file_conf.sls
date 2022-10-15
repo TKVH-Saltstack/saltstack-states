@@ -15,7 +15,7 @@ install_ohmyzsh:
     - name: /opt/install.sh
     - cwd: /opt/
     - onlyif:
-      - test -d /usr/local/share/oh-my-zsh || echo 0
+      - test -d /usr/local/share/oh-my-zsh && echo 1
 /etc/skel/.zshrc:
   file.managed:
     - source:
