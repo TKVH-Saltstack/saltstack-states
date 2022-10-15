@@ -15,6 +15,10 @@ install_ohmyzsh:
   cmd.run:
     - name: /opt/install.sh
     - cwd: /opt/
+  git.cloned:
+    - name: https://github.com/spaceship-prompt/spaceship-prompt.git
+    - target: "$ZSH_CUSTOM/themes/spaceship-prompt"
+
 
 /etc/skel/.zshrc:
   file.managed:

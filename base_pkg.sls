@@ -9,3 +9,5 @@ install_network_packages:
       - cloud-init
       - curl
       - git
+      - neofetch
+      - fonts-firacode
