@@ -3,3 +3,4 @@ install_network_packages:
     - pkgs:
       - sudo
       - vim
+      - nfs-common
