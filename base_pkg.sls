@@ -5,3 +5,4 @@ install_network_packages:
       - vim
       - nfs-common
       - zsh
+      - openssh-server
