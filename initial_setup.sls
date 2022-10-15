@@ -6,6 +6,7 @@ install_network_packages:
       - git
       - neofetch
       - fonts-firacode
+      - curl
 
 /etc/ssh/sshd_config:
   file.managed:
