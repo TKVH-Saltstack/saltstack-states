@@ -17,7 +17,7 @@ install_ohmyzsh:
     - cwd: /opt/
   git.cloned:
     - name: https://github.com/spaceship-prompt/spaceship-prompt.git
-    - target: "$ZSH_CUSTOM/themes/spaceship-prompt"
+    - target: "/usr/local/share/oh-my-zsh/custom/themes/spaceship-prompt"
 
 
 /etc/skel/.zshrc:
