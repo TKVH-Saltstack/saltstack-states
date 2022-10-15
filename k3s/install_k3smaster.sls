@@ -106,7 +106,7 @@ download_kubectx:
     - name: /tmp/
     - source: /tmp/kubectx.tar.gz
     - enforce_toplevel: False
-    - enforce_ownership_on: /tmp/
+    - user: root
 
 install_kubectx:
   file.managed:
@@ -124,7 +124,7 @@ download_kubens:
     - name: /tmp/
     - source: /tmp/kubens.tar.gz
     - enforce_toplevel: False
-    - enforce_ownership_on: /tmp/
+    - user: root
 
 install_kubens:
   file.managed:
