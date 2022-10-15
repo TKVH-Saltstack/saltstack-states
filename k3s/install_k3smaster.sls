@@ -18,7 +18,7 @@ download_k3sinstall:
     - name: /opt/k3s-install.sh
     - cwd: /opt/
 
-/home/vhang/.kube:
+'/home/vhang/.kube':
   file.directory:
     - mode: 755
     - makedirs: True
