@@ -1,3 +1,8 @@
+install_network_packages:
+  pkg.installed:
+    - pkgs:
+      - nfs-common
+
 /etc/rancher/k3s:
   file.directory:
     - mode: 755
