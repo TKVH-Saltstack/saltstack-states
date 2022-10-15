@@ -6,3 +6,4 @@ install_network_packages:
       - nfs-common
       - zsh
       - openssh-server
+      - cloud-init
