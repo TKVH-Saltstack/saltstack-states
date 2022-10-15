@@ -72,6 +72,9 @@ install_k9s:
     - name: /usr/local/bin/k9s
     - source: /tmp/k9s
     - mode: 755
+  file.directory:
+    - name: /tmp
+    - clean: True
 
 kubectl_alias_k_root:
   file.append:
@@ -102,17 +105,20 @@ download_kubectx:
     - mode: 644
     - source: https://github.com/ahmetb/kubectx/releases/download/v0.9.4/kubectx_v0.9.4_linux_x86_64.tar.gz
     - skip_verify: True
-  module.run:
-    - name: /tmp/kubectx.tar.gz
-    - options: xzfv
-    - tarfile: /tmp/kubectx.tar.gz 
-    - dest: /tmp/
+  archive.extracted:
+    - name: /tmp/
+    - source: /tmp/kubectx.tar.gz
+    - enforce_toplevel: False
+    - user: root
 
 install_kubectx:
   file.managed:
     - name: /usr/local/bin/kubectx
     - source: /tmp/kubectx
     - mode: 755
+  file.directory:
+    - name: /tmp
+    - clean: True
 
 download_kubens:
   file.managed:
@@ -131,6 +137,9 @@ install_kubens:
     - name: /usr/local/bin/kubens
     - source: /tmp/kubens
     - mode: 755
+  file.directory:
+    - name: /tmp
+    - clean: True
 
 kubectx_completion:
   file.managed:
