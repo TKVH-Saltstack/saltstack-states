@@ -14,3 +14,8 @@ install_ohmyzsh:
   cmd.run:
     - name: /opt/install.sh
     - cwd: /opt/
+
+/etc/skel.zshrc:
+  file.managed:
+    - source:
+      - salt://conf/zshrc-base
