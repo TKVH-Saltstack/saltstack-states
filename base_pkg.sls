@@ -7,3 +7,4 @@ install_network_packages:
       - zsh
       - openssh-server
       - cloud-init
+      - curl
