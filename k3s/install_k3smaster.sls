@@ -10,7 +10,7 @@
 
 download_k3sinstall:
   file.managed:
-    - name: /opt/k3s-install
+    - name: /opt/k3s-install.sh
     - mode: 755
     - source: https://get.k3s.io
     - skip_verify: True
