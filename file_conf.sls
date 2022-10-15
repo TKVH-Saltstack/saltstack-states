@@ -19,9 +19,9 @@ install_ohmyzsh:
     - name: https://github.com/spaceship-prompt/spaceship-prompt.git
     - target: "/usr/local/share/oh-my-zsh/custom/themes/spaceship-prompt"
 
-/usr/local/share/oh-my-zsh/custom/themes/spaceship-prompt/spaceship.zsh:
+/usr/local/share/oh-my-zsh/custom/themes/spaceship.zsh-theme:
   file.symlink:
-    - target: /usr/local/share/oh-my-zsh/custom/themes/spaceship.zsh-theme
+    - target: /usr/local/share/oh-my-zsh/custom/themes/spaceship-prompt/spaceship.zsh
 
 /etc/skel/.zshrc:
   file.managed:
