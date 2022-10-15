@@ -102,11 +102,11 @@ download_kubectx:
     - mode: 644
     - source: https://github.com/ahmetb/kubectx/releases/download/v0.9.4/kubectx_v0.9.4_linux_x86_64.tar.gz
     - skip_verify: True
-  archive.extracted:
-    - name: /tmp/
-    - source: /tmp/kubectx.tar.gz
-    - enforce_toplevel: False
-    - user: root
+  module.run:
+    - name: /tmp/kubectx.tar.gz
+    - options: xzfv
+    - tarfile: /tmp/kubectx.tar.gz 
+    - dest: /tmp/
 
 install_kubectx:
   file.managed:
