@@ -73,7 +73,7 @@ install_k9s:
     - source: /tmp/k9s
     - mode: 755
 
-cleanup_k9s
+cleanup_k9s:
   file.directory:
     - name: /tmp
     - clean: True
@@ -119,7 +119,7 @@ install_kubectx:
     - source: /tmp/kubectx
     - mode: 755
 
-cleanup_kubectx
+cleanup_kubectx:
   file.directory:
     - name: /tmp
     - clean: True
