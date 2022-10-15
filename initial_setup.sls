@@ -13,7 +13,6 @@ vhang:
     - shell: /bin/zsh
     - groups: 
       - sudo
-      - wheel
 
 root:
   user.present:
