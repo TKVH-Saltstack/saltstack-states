@@ -72,6 +72,8 @@ install_k9s:
     - name: /usr/local/bin/k9s
     - source: /tmp/k9s
     - mode: 755
+
+cleanup_k9s
   file.directory:
     - name: /tmp
     - clean: True
@@ -116,6 +118,8 @@ install_kubectx:
     - name: /usr/local/bin/kubectx
     - source: /tmp/kubectx
     - mode: 755
+
+cleanup_kubectx
   file.directory:
     - name: /tmp
     - clean: True
@@ -137,6 +141,8 @@ install_kubens:
     - name: /usr/local/bin/kubens
     - source: /tmp/kubens
     - mode: 755
+
+cleanup_kubens:
   file.directory:
     - name: /tmp
     - clean: True
