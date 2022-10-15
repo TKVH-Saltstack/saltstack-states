@@ -1,4 +1,4 @@
-install_network_packages:
+install_k3srequired_packages:
   pkg.installed:
     - pkgs:
       - nfs-common
