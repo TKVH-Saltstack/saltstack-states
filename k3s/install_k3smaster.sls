@@ -29,6 +29,8 @@ download_k3sinstall:
 /home/vhang/.kube:
   file.directory:
     - mode: 755
+    - user: vhang
+    - group: vhang
     - makedirs: True
 
 /home/vhang/.kube/config:
