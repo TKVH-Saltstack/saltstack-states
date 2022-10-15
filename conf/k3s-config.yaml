@@ -1,0 +1,7 @@
+disable:
+- servicelb
+- traefik
+- local-storage
+- metrics-server
+flannel-backend: none
+disable-network-policy: true
