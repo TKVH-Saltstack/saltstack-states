@@ -46,3 +46,17 @@ install_kubectl:
     - mode: 755
     - source: https://dl.k8s.io/release/v1.25.0/bin/linux/amd64/kubectl
     - skip_verify: True
+
+/root/.zshrc:
+  file.append:
+    - text: 
+      - "# kubectl"
+      - "source <(kubectl completion zsh)"
+      - "complete -o default -F __start_kubectl k"
+
+/home/vhang/.zshrc:
+  file.append:
+    - text:
+      - "# kubectl"
+      - "source <(kubectl completion zsh)"
+      - "complete -o default -F __start_kubectl k"
