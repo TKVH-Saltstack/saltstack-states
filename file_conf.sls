@@ -9,7 +9,7 @@ install_ohmyzsh:
   environ.setenv:
     - name: ZSH
     - value: /usr/local/share/oh-my-zsh
-  file.directory:
+  file.absent:
     - name: /usr/local/share/oh-my-zsh
     - clean: True
   cmd.run:
