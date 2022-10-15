@@ -10,7 +10,7 @@ install_ohmyzsh:
     - name: ZSH
     - value: /usr/local/share/oh-my-zsh
   file.directory:
-    - name: /usr/local/share/oh-m-zsh
+    - name: /usr/local/share/oh-my-zsh
     - clean: True
   cmd.run:
     - name: /opt/install.sh
