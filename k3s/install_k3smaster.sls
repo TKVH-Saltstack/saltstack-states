@@ -99,7 +99,7 @@ kubectl_alias_k:
 download_kubectx:
   file.managed:
     - name: /tmp/kubectx.tar.gz
-    - mode: 644
+    - mode: 777
     - source: https://github.com/ahmetb/kubectx/releases/download/v0.9.4/kubectx_v0.9.4_linux_x86_64.tar.gz
     - skip_verify: True
   archive.extracted:
@@ -116,7 +116,7 @@ install_kubectx:
 download_kubens:
   file.managed:
     - name: /tmp/kubens.tar.gz
-    - mode: 644
+    - mode: 777
     - source: https://github.com/ahmetb/kubectx/releases/download/v0.9.4/kubens_v0.9.4_linux_x86_64.tar.gz
     - skip_verify: True
   archive.extracted:
