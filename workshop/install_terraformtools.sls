@@ -9,6 +9,7 @@ download_terraform:
   archive.extracted:
     - source: /tmp/terraform.zip
     - use_cmd_unzip: True
+    - enforce_toplevel: False
 
 install_terraform:
   file.managed:
