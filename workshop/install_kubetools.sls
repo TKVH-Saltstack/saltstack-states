@@ -45,6 +45,15 @@ kubectl_alias_k:
       - "source <(kubectl completion zsh)"
       - "complete -o default -F __start_kubectl k"
 
+kubectl_alias_k_global:
+  file.append:
+   - name: /etc/skel/.zshrc
+   - text:
+      - "# kubectl"
+      - "alias k=kubectl"
+      - "source <(kubectl completion zsh)"
+      - "complete -o default -F __start_kubectl k"
+
 /usr/local/share/oh-my-zsh/completions:
   file.directory:
     - mode: 755
@@ -121,6 +130,14 @@ kubectx_alias:
 kubectx_alias_root:
   file.append:
     - name: /root/.zshrc
+    - text:
+      - "# kubectx"
+      - "alias kns=kubens"
+      - "alias kctx=kubectx"
+
+kubectx_alias_global:
+  file.append:
+    - name: /etc/skel/.zshrc
     - text:
       - "# kubectx"
       - "alias kns=kubens"

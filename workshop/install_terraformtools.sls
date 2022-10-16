@@ -21,3 +21,24 @@ cleanup_terraform:
   file.directory:
     - name: /tmp
     - clean: True
+
+terraform_completion:
+  file.append:
+   - name: /home/vhang/.zshrc
+   - text:
+      - "# terraform"
+      - "complete -o nospace -C /usr/local/bin/terraform terraform"
+
+terraform_completion_root:
+  file.append:
+   - name: /root/.zshrc
+   - text:
+      - "# terraform"
+      - "complete -o nospace -C /usr/local/bin/terraform terraform"
+
+terraform_completion_global:
+  file.append:
+   - name: /etc/skel/.zshrc
+   - text:
+      - "# terraform"
+      - "complete -o nospace -C /usr/local/bin/terraform terraform"
