@@ -6,6 +6,7 @@ install_network_packages:
       - git
       - neofetch
       - fonts-firacode
+      - fonts-powerline
       - curl
       - unzip
 
