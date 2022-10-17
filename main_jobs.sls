@@ -1,4 +1,4 @@
 highstate_apply:
   schedule.present:
     - function: state.apply
-    - seconds: 10
+    - seconds: 300
