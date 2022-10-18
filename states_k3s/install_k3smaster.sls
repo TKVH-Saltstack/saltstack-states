@@ -27,13 +27,10 @@ download_k3sinstall:
   cmd.script:
     - name: k3s-install.sh
     - source: /opt/k3s-install.sh
-    - stateful: True
-    - success_stdout: 
-      - "[INFO]  systemd: Starting k3s"
 
 k3s:
   service.running:
-    - require:
+    - onchanges:
       - cmd: download_k3sintall
 
 /home/vhang/.kube:
@@ -48,7 +45,7 @@ k3s:
     - source: /etc/rancher/k3s/k3s.yaml
     - user: vhang
     - group: vhang
-    - require:
+    - onchanges:
       - cmd: download_k3sintall
 
 /root/.kube:
@@ -61,5 +58,5 @@ k3s:
     - source: /etc/rancher/k3s/k3s.yaml
     - user: root
     - group: root
-    - require:
+    - onchanges:
       - cmd: download_k3sintall
