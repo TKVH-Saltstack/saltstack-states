@@ -1,3 +1,4 @@
+{% if not salt['file.file_exists' ]('/usr/local/bin/terraform') %}
 download_terraform:
   file.managed:
     - name: /tmp/terraform.zip
@@ -21,24 +22,23 @@ cleanup_terraform:
   file.directory:
     - name: /tmp
     - clean: True
-
-terraform_completion:
-  file.append:
-   - name: /home/vhang/.zshrc
-   - text:
-      - "# terraform"
-      - "complete -o nospace -C /usr/local/bin/terraform terraform"
-
-terraform_completion_root:
-  file.append:
-   - name: /root/.zshrc
-   - text:
-      - "# terraform"
-      - "complete -o nospace -C /usr/local/bin/terraform terraform"
+{% endif %}
 
 terraform_completion_global:
   file.append:
-   - name: /etc/skel/.zshrc
-   - text:
-      - "# terraform"
-      - "complete -o nospace -C /usr/local/bin/terraform terraform"
+    - name: /etc/skel/.zshrc
+    - text: |
+        # terraform
+        complete -o nospace -C /usr/local/bin/terraform terraform
+
+terraform_completion_root:
+  file.append:
+    - name: /root/.zshrc
+    - sources:
+      - /etc/skel/.zshrc
+
+terraform_completion:
+  file.append:
+    - name: /home/vhang/.zshrc
+    - sources:
+      - /etc/skel/.zshrc
