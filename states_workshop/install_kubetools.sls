@@ -31,6 +31,32 @@ cleanup_k9s:
 
 {% endif %}
 
+{% if not salt['file.file_exists' ]('/usr/local/bin/k9s') %}
+
+download_kustomize:
+  file.managed:
+    - name: /tmp/kustomize.tar.gz
+    - mode: 644
+    - source: https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv4.5.7/kustomize_v4.5.7_linux_amd64.tar.gz
+    - skip_verify: True
+  archive.extracted:
+    - name: /tmp/
+    - source: /tmp/kustomize.tar.gz
+    - enforce_toplevel: False
+
+install_kustomize:
+  file.managed:
+    - name: /usr/local/bin/kustomize
+    - source: /tmp/kustomize
+    - mode: 755
+
+cleanup_kustomize:
+  file.directory:
+    - name: /tmp
+    - clean: True
+
+{% endif %}
+
 kubectl_alias_k_global:
   file.append:
     - name: /etc/skel/.zshrc
