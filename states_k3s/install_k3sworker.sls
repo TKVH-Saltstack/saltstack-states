@@ -22,3 +22,6 @@ download_k3sinstall:
   cmd.run:
     - name: /opt/k3s-install.sh
     - cwd: /opt/
+
+k3s-agent:
+  service.running: []

@@ -26,6 +26,9 @@ download_k3sinstall:
     - name: /opt/k3s-install.sh
     - cwd: /opt/
 
+k3s-agent:
+  service.running: []
+
 /home/vhang/.kube:
   file.directory:
     - mode: 755
@@ -49,3 +52,4 @@ download_k3sinstall:
     - source: /etc/rancher/k3s/k3s.yaml
     - user: root
     - group: root
+
