@@ -5,7 +5,7 @@ install_kubectl:
     - source: https://dl.k8s.io/release/v1.25.0/bin/linux/amd64/kubectl
     - skip_verify: True
 
-{% if not salt['file.exists' ]('/usr/local/bin/k9s') %}
+{% if not salt['file.directory_exists' ]('/usr/local/bin/k9s') %}
 
 download_k9s:
   file.managed:
@@ -57,7 +57,7 @@ kubectl_alias_k:
     - mode: 755
     - makedirs: True
 
-{% if not salt['file.exists' ]('/usr/local/bin/kubectx') %}
+{% if not salt['file.directory_exists' ]('/usr/local/bin/kubectx') %}
 
 download_kubectx:
   file.managed:
@@ -84,7 +84,7 @@ cleanup_kubectx:
 
 {% endif %}
 
-{% if not salt['file.exists' ]('/usr/local/bin/kubens') %}
+{% if not salt['file.directory_exists' ]('/usr/local/bin/kubens') %}
 
 download_kubens:
   file.managed:
