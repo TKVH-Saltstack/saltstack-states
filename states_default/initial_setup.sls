@@ -40,7 +40,7 @@ install_ohmyzsh:
     - name: ZSH
     - value: /usr/local/share/oh-my-zsh
     - name: KEEP_ZSHRC
-    - value: yes
+    - value: "yes"
 
   file.absent:
     - name: /usr/local/share/oh-my-zsh
