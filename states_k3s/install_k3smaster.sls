@@ -12,6 +12,8 @@ install_k3srequired_packages:
   file.managed:
     - source:
       - salt://conf/k3s_config.yaml
+    - require:
+      - file: /etc/rancher/k3s
 
 download_k3sinstall:
   environ.setenv:
@@ -26,6 +28,11 @@ download_k3sinstall:
     - name: /opt/k3s-install.sh
     - cwd: /opt/
 
+k3s:
+  service.running: []
+    - require:
+      - cmd: download_k3sintall
+
 /home/vhang/.kube:
   file.directory:
     - mode: 755
@@ -38,6 +45,8 @@ download_k3sinstall:
     - source: /etc/rancher/k3s/k3s.yaml
     - user: vhang
     - group: vhang
+    - require:
+      - cmd: download_k3sintall
 
 /root/.kube:
   file.directory:
@@ -49,4 +58,5 @@ download_k3sinstall:
     - source: /etc/rancher/k3s/k3s.yaml
     - user: root
     - group: root
-
+    - require:
+      - cmd: download_k3sintall
