@@ -5,6 +5,8 @@ install_kubectl:
     - source: https://dl.k8s.io/release/v1.25.0/bin/linux/amd64/kubectl
     - skip_verify: True
 
+{% if not salt['file.exists' ]('/usr/local/bin/k9s') %}
+
 download_k9s:
   file.managed:
     - name: /tmp/k9s.tar.gz
@@ -27,37 +29,35 @@ cleanup_k9s:
     - name: /tmp
     - clean: True
 
-kubectl_alias_k_root:
-  file.append:
-    - name: /root/.zshrc
-    - text:
-      - "# kubectl"
-      - "alias k=kubectl"
-      - "source <(kubectl completion zsh)"
-      - "complete -o default -F __start_kubectl k"
-
-kubectl_alias_k:
-  file.append:
-   - name: /home/vhang/.zshrc
-   - text:
-      - "# kubectl"
-      - "alias k=kubectl"
-      - "source <(kubectl completion zsh)"
-      - "complete -o default -F __start_kubectl k"
+{% endif %}
 
 kubectl_alias_k_global:
   file.append:
-   - name: /etc/skel/.zshrc
-   - text:
-      - "# kubectl"
-      - "alias k=kubectl"
-      - "source <(kubectl completion zsh)"
-      - "complete -o default -F __start_kubectl k"
+    - name: /etc/skel/.zshrc
+    - text: |
+         # kubectl
+         alias k=kubectl
+         source <(kubectl completion zsh)
+         complete -o default -F __start_kubectl k
+
+kubectl_alias_k_root:
+  file.append:
+    - name: /root/.zshrc
+    - sources:
+      - /etc/skel/.zshrc
+
+kubectl_alias_k:
+  file.append:
+    - name: /home/vhang/.zshrc
+    - sources:
+      - /etc/skel/.zshrc
 
 /usr/local/share/oh-my-zsh/completions:
   file.directory:
     - mode: 755
     - makedirs: True
+
+{% if not salt['file.exists' ]('/usr/local/bin/kubectx') %}
 
 download_kubectx:
   file.managed:
@@ -82,6 +82,10 @@ cleanup_kubectx:
     - name: /tmp
     - clean: True
 
+{% endif %}
+
+{% if not salt['file.exists' ]('/usr/local/bin/kubens') %}
+
 download_kubens:
   file.managed:
     - name: /tmp/kubens.tar.gz
@@ -105,6 +109,8 @@ cleanup_kubens:
     - name: /tmp
     - clean: True
 
+{% endif %}
+
 kubectx_completion:
   file.managed:
     - name: /usr/local/share/oh-my-zsh/completions/_kubectx.zsh
@@ -119,26 +125,22 @@ kubens_completion:
     - source: https://raw.githubusercontent.com/ahmetb/kubectx/master/completion/_kubens.zsh
     - skip_verify: True
 
-kubectx_alias:
+kubectx_alias_global:
   file.append:
-    - name: /home/vhang/.zshrc
-    - text:
-      - "# kubectx"
-      - "alias kns=kubens"
-      - "alias kctx=kubectx"
+    - name: /etc/skel/.zshrc
+    - text: |
+        # kubectx
+        alias kns=kubens
+        alias kctx=kubectx
 
 kubectx_alias_root:
   file.append:
     - name: /root/.zshrc
-    - text:
-      - "# kubectx"
-      - "alias kns=kubens"
-      - "alias kctx=kubectx"
+    - sources:
+      - /etc/skel/.zshrc
 
-kubectx_alias_global:
+kubectx_alias:
   file.append:
-    - name: /etc/skel/.zshrc
-    - text:
-      - "# kubectx"
-      - "alias kns=kubens"
-      - "alias kctx=kubectx"
+    - name: /home/vhang/.zshrc
+    - sources:
+      - /etc/skel/.zshrc
