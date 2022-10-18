@@ -19,8 +19,8 @@ download_k3sinstall:
     - mode: 755
     - source: https://get.k3s.io
     - skip_verify: True
-  cmd.run:
-    - name: /opt/k3s-install.sh
-    - cwd: /opt/
+  cmd.script:
+    - name: k3s-install.sh
+    - source: /opt/k3s-install.sh
   service.running:
     - name: k3s-agent

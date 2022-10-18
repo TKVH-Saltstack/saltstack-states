@@ -54,8 +54,6 @@ install_kustomize:
     - creates:
       - /usr/local/share/oh-my-zsh/completions/_kustomize
 
-{% endif %}
-
 cleanup_kustomize:
   file.directory:
     - name: /tmp
