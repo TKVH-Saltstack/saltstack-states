@@ -29,7 +29,7 @@ download_k3sinstall:
     - cwd: /opt/
 
 k3s:
-  service.running: []
+  service.running:
     - require:
       - cmd: download_k3sintall
 
