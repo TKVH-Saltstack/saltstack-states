@@ -27,6 +27,7 @@ download_k3sinstall:
   cmd.script:
     - name: k3s-install.sh
     - source: /opt/k3s-install.sh
+    - success_stdout: "[INFO]  systemd: Starting k3s"
     - stateful: True
 
 k3s:
