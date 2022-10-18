@@ -1,9 +1,7 @@
-install_kubectl:
-  file.managed:
-    - name: /usr/local/bin/kubectl
-    - mode: 755
-    - source: https://dl.k8s.io/release/v1.25.0/bin/linux/amd64/kubectl
-    - skip_verify: True
+install_kubectl_packages:
+  pkg.installed:
+    - pkgs:
+      - kubectl
 
 {% if not salt['file.file_exists' ]('/usr/local/bin/k9s') %}
 
@@ -11,7 +9,7 @@ download_k9s:
   file.managed:
     - name: /tmp/k9s.tar.gz
     - mode: 644
-    - source: https://github.com/derailed/k9s/releases/download/v0.26.6/k9s_Linux_x86_64.tar.gz
+    - source: https://github.com/derailed/k9s/releases/latest/download/k9s_Linux_x86_64.tar.gz
     - skip_verify: True
   archive.extracted:
     - name: /tmp/
