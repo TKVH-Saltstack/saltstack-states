@@ -30,7 +30,7 @@ install_k3s:
     - name: /opt/k3s-install.sh
     - text: |
          echo  # an empty line here so the next line will be the last.
-         echo "changed=yes comment='something has changed' whatever=123"
+         echo "changed=no comment='something has changed' whatever=123"
   cmd.script:
     - name: k3s-install.sh
     - source: /opt/k3s-install.sh
@@ -38,8 +38,8 @@ install_k3s:
 
 k3s:
   service.running:
-    - onchanges:
-      - cmd: download_k3sintall
+    - require:
+      - cmd: download_k3sinstall
 
 /home/vhang/.kube:
   file.directory:
@@ -53,8 +53,8 @@ k3s:
     - source: /etc/rancher/k3s/k3s.yaml
     - user: vhang
     - group: vhang
-    - onchanges:
-      - cmd: download_k3sintall
+    - require:
+      - cmd: download_k3sinstall
 
 /root/.kube:
   file.directory:
@@ -66,5 +66,5 @@ k3s:
     - source: /etc/rancher/k3s/k3s.yaml
     - user: root
     - group: root
-    - onchanges:
-      - cmd: download_k3sintall
+    - require:
+      - cmd: download_k3sinstall
