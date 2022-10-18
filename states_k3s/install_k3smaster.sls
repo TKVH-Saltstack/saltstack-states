@@ -27,6 +27,7 @@ download_k3sinstall:
   cmd.script:
     - name: k3s-install.sh
     - source: /opt/k3s-install.sh
+    - stateful: True
 
 k3s:
   service.running:
