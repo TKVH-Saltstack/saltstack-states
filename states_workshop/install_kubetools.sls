@@ -57,6 +57,16 @@ cleanup_kustomize:
 
 {% endif %}
 
+{% if salt['file.file_exists' ]('/usr/local/bin/kustomize') %}
+
+kustomize_completion:
+  cmd.run:
+    - name: kustomize completion zsh > /usr/local/share/oh-my-zsh/completions/_kustomize
+    - creates:
+      - /usr/local/share/oh-my-zsh/completions/_kustomize
+
+{% endif %}
+
 kubectl_alias_k_global:
   file.append:
     - name: /etc/skel/.zshrc
