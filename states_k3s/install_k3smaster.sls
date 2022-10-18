@@ -24,9 +24,15 @@ download_k3sinstall:
     - mode: 755
     - source: https://get.k3s.io
     - skip_verify: True
+  file.append:
+    - name: /opt/k3s-install.sh
+    - text: |
+         echo  # an empty line here so the next line will be the last.
+         echo "changed=yes comment='something has changed' whatever=123"
   cmd.script:
     - name: k3s-install.sh
     - source: /opt/k3s-install.sh
+    - stateful: True
 
 k3s:
   service.running:
