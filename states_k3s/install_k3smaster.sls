@@ -24,6 +24,8 @@ download_k3sinstall:
     - mode: 755
     - source: https://get.k3s.io
     - skip_verify: True
+
+install_k3s:
   file.append:
     - name: /opt/k3s-install.sh
     - text: |
