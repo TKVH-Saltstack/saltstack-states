@@ -31,7 +31,7 @@ cleanup_k9s:
 
 {% endif %}
 
-{% if not salt['file.file_exists' ]('/usr/local/bin/k9s') %}
+{% if not salt['file.file_exists' ]('/usr/local/bin/kustomize') %}
 
 download_kustomize:
   file.managed:
