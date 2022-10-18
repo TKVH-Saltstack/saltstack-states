@@ -26,20 +26,12 @@ download_k3sinstall:
     - skip_verify: True
 
 install_k3s:
-  file.append:
-    - name: /opt/k3s-install.sh
-    - text: |
-         echo  # an empty line here so the next line will be the last.
-         echo "changed=no comment='something has changed' whatever=123"
   cmd.script:
     - name: k3s-install.sh
     - source: /opt/k3s-install.sh
     - stateful: True
-
-k3s:
   service.running:
-    - require:
-      - cmd: download_k3sinstall
+    - name: k3s
 
 /home/vhang/.kube:
   file.directory:
@@ -54,7 +46,7 @@ k3s:
     - user: vhang
     - group: vhang
     - require:
-      - cmd: download_k3sinstall
+      - service: install_k3s
 
 /root/.kube:
   file.directory:
@@ -67,4 +59,4 @@ k3s:
     - user: root
     - group: root
     - require:
-      - cmd: download_k3sinstall
+      - service: install_k3s
