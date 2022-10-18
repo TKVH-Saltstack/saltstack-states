@@ -35,12 +35,17 @@ download_ohmyzsh:
 
 {% if not salt['file.directory_exists' ]('/usr/local/share/oh-my-zsh') %}
 
-install_ohmyzsh:
+env_ZSH:
   environ.setenv:
     - name: ZSH
     - value: /usr/local/share/oh-my-zsh
+
+env_KEEP_ZSHRC:
+  environ.setenv:
     - name: KEEP_ZSHRC
     - value: "yes"
+
+install_ohmyzsh:
   cmd.run:
     - name: /opt/install.sh
     - cwd: /opt/
