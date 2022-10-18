@@ -41,10 +41,6 @@ install_ohmyzsh:
     - value: /usr/local/share/oh-my-zsh
     - name: KEEP_ZSHRC
     - value: "yes"
-
-  file.absent:
-    - name: /usr/local/share/oh-my-zsh
-    - clean: True
   cmd.run:
     - name: /opt/install.sh
     - cwd: /opt/
