@@ -49,21 +49,17 @@ install_kustomize:
     - name: /usr/local/bin/kustomize
     - source: /tmp/kustomize
     - mode: 755
+  cmd.run:
+    - name: kustomize completion zsh > /usr/local/share/oh-my-zsh/completions/_kustomize
+    - creates:
+      - /usr/local/share/oh-my-zsh/completions/_kustomize
+
+{% endif %}
 
 cleanup_kustomize:
   file.directory:
     - name: /tmp
     - clean: True
-
-{% endif %}
-
-{% if salt['file.file_exists' ]('/usr/local/bin/kustomize') %}
-
-kustomize_completion:
-  cmd.run:
-    - name: kustomize completion zsh > /usr/local/share/oh-my-zsh/completions/_kustomize
-    - creates:
-      - /usr/local/share/oh-my-zsh/completions/_kustomize
 
 {% endif %}
 
