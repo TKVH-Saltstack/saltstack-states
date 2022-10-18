@@ -26,7 +26,7 @@ download_k3sinstall:
     - name: /opt/k3s-install.sh
     - cwd: /opt/
 
-k3s-agent:
+k3s-server:
   service.running: []
 
 /home/vhang/.kube:
