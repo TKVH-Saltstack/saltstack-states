@@ -44,6 +44,11 @@ download_kustomize:
     - source: /tmp/kustomize.tar.gz
     - enforce_toplevel: False
 
+/usr/local/share/oh-my-zsh/completions:
+  file.directory:
+    - mode: 755
+    - makedirs: True
+
 install_kustomize:
   file.managed:
     - name: /usr/local/bin/kustomize
@@ -53,6 +58,9 @@ install_kustomize:
     - name: kustomize completion zsh > /usr/local/share/oh-my-zsh/completions/_kustomize
     - creates:
       - /usr/local/share/oh-my-zsh/completions/_kustomize
+    - require:
+      - file: install_kustomize
+      - file: /usr/local/share/oh-my-zsh/completions
 
 cleanup_kustomize:
   file.directory:
@@ -87,11 +95,6 @@ kubectl_alias_k:
          alias k=kubectl
          source <(kubectl completion zsh)
          complete -o default -F __start_kubectl k
-
-/usr/local/share/oh-my-zsh/completions:
-  file.directory:
-    - mode: 755
-    - makedirs: True
 
 {% if not salt['file.file_exists' ]('/usr/local/bin/kubectx') %}
 
@@ -153,6 +156,8 @@ kubectx_completion:
     - mode: 755
     - source: https://raw.githubusercontent.com/ahmetb/kubectx/master/completion/_kubectx.zsh
     - skip_verify: True
+    - require:
+      - file: /usr/local/share/oh-my-zsh/completions
 
 kubens_completion:
   file.managed:
@@ -160,6 +165,8 @@ kubens_completion:
     - mode: 755
     - source: https://raw.githubusercontent.com/ahmetb/kubectx/master/completion/_kubens.zsh
     - skip_verify: True
+    - require:
+      - file: /usr/local/share/oh-my-zsh/completions
 
 kubectx_alias_global:
   file.append:
