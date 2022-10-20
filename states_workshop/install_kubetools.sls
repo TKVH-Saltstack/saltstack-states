@@ -57,6 +57,11 @@ cleanup_cilium:
 
 {% endif %}
 
+/usr/local/share/oh-my-zsh/completions:
+  file.directory:
+    - mode: 755
+    - makedirs: True
+
 {% if not salt['file.file_exists' ]('/usr/local/bin/kustomize') %}
 
 download_kustomize:
