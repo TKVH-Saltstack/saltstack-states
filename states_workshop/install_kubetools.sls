@@ -31,6 +31,32 @@ cleanup_k9s:
 
 {% endif %}
 
+{% if not salt['file.file_exists' ]('/usr/local/bin/cilium') %}
+
+download_cilium:
+  file.managed:
+    - name: /tmp/cilium.tar.gz
+    - mode: 644
+    - source: https://github.com/cilium/cilium-cli/releases/latest/download/cilium-linux-amd64.tar.gz
+    - skip_verify: True
+  archive.extracted:
+    - name: /tmp/
+    - source: /tmp/cilium.tar.gz
+    - enforce_toplevel: False
+
+install_cilium:
+  file.managed:
+    - name: /usr/local/bin/cilium
+    - source: /tmp/cilium
+    - mode: 755
+
+cleanup_cilium:
+  file.directory:
+    - name: /tmp
+    - clean: True
+
+{% endif %}
+
 {% if not salt['file.file_exists' ]('/usr/local/bin/kustomize') %}
 
 download_kustomize:
