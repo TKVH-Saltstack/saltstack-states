@@ -5,6 +5,11 @@ install_kubectl_packages:
     - source: https://dl.k8s.io/release/v1.25.0/bin/linux/amd64/kubectl
     - skip_verify: True
 
+/usr/local/share/oh-my-zsh/completions:
+  file.directory:
+    - mode: 755
+    - makedirs: True
+
 {% if not salt['file.file_exists' ]('/usr/local/bin/k9s') %}
 
 download_k9s:
@@ -49,6 +54,13 @@ install_cilium:
     - name: /usr/local/bin/cilium
     - source: /tmp/cilium
     - mode: 755
+  cmd.run:
+    - name: cilium completion zsh > /usr/local/share/oh-my-zsh/completions/_cilium
+    - creates:
+      - /usr/local/share/oh-my-zsh/completions/_kustomize
+    - require:
+      - file: install_cilium
+      - file: /usr/local/share/oh-my-zsh/completions
 
 cleanup_cilium:
   file.directory:
@@ -56,11 +68,6 @@ cleanup_cilium:
     - clean: True
 
 {% endif %}
-
-/usr/local/share/oh-my-zsh/completions:
-  file.directory:
-    - mode: 755
-    - makedirs: True
 
 {% if not salt['file.file_exists' ]('/usr/local/bin/kustomize') %}
 
