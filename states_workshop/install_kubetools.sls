@@ -75,11 +75,6 @@ download_kustomize:
     - source: /tmp/kustomize.tar.gz
     - enforce_toplevel: False
 
-/usr/local/share/oh-my-zsh/completions:
-  file.directory:
-    - mode: 755
-    - makedirs: True
-
 install_kustomize:
   file.managed:
     - name: /usr/local/bin/kustomize
