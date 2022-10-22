@@ -57,7 +57,7 @@ install_cilium:
   cmd.run:
     - name: cilium completion zsh > /usr/local/share/oh-my-zsh/completions/_cilium
     - creates:
-      - /usr/local/share/oh-my-zsh/completions/_kustomize
+      - /usr/local/share/oh-my-zsh/completions/_cilium
     - require:
       - file: install_cilium
       - file: /usr/local/share/oh-my-zsh/completions
