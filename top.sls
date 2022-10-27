@@ -4,11 +4,11 @@ base:
     - states_default.initial_setup
     - states_default.main_jobs
 
-  'k3s-prod-master01':
+  'k3s*master01':
     - states_k3s.install_k3smaster
     - states_workshop.install_kubetools
 
-  'k3s-prod-worker*':
+  'k3s*worker*':
     - states_k3s.install_k3sworker
 
   '*workshop*':
